@@ -181,7 +181,7 @@ login({
         } else if (str.indexOf("mèo") != -1 || str.indexOf("bánh") != -1) {
             api.markAsRead(message.threadID);
             answeredThreads[message.threadID] = true;
-            api.sendMessage("Meooo meooo (～￣▽￣)～", message.threadID);
+            api.sendMessage("Meooo meooo \n (●ˇ∀ˇ●)", message.threadID);
             return;
         }
 
