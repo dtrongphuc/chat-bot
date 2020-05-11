@@ -138,6 +138,11 @@ login({
             answeredThreads[message.threadID] = true;
             api.sendMessage("đá vô mồm m giờ", message.threadID);
             return;
+        }else if (str.indexOf("câm") != -1) {
+            api.markAsRead(message.threadID);
+            answeredThreads[message.threadID] = true;
+            api.sendMessage("câm luôn :(", message.threadID);
+            return;
         } else if (str.indexOf("wibu") != -1 || str.indexOf("wjbu") != -1) {
             api.markAsRead(message.threadID);
             answeredThreads[message.threadID] = true;
