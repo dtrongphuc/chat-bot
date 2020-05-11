@@ -202,7 +202,7 @@ login({
             // };
 
             answeredThreads[message.threadID] = true;
-            api.sendMessage("❤🧡💛💚💙💜🤎🖤🤍", message.threadID);
+            api.sendMessage("💢💢💢", message.threadID);
         }
     });
 
