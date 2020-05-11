@@ -13,7 +13,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
-    "facebook-chat-api": "github:Schmavery/facebook-chat-api",
+    "facebook-chat-api": "github:dtrongphuc/facebook-chat-api",
     "request": "^2.88.0",
     "simsimi": "^3.0.0"
   }
