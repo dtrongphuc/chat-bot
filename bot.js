@@ -206,8 +206,7 @@ login({
             //     return;
             // };
 
-            answeredThreads[message.threadID] = true;
-            api.sendMessage("💢💢💢", message.threadID);
+            api.markAsRead(message.threadID);
         }
     });
 
