@@ -188,9 +188,10 @@ login({
             answeredThreads[message.threadID] = true;
             api.sendMessage("Meooo meooo \n (●ˇ∀ˇ●)", message.threadID);
             return;
+        } else {
+            api.markAsRead(message.threadID);
         }
 
-        api.markAsRead(message.threadID);
 
         if (!answeredThreads.hasOwnProperty(message.threadID)) {
 
