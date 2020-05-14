@@ -26,10 +26,15 @@ function findAndResponse (keyword) {
     }
     var keywordLower = keyword.toLowerCase();
     result.forEach(function(elem) {
-        let key = Object.keys(elem)[0];
-        if(keywordLower.includes(key)) {
-            resText = elem[key];
-        }       
+        let generalKey = Object.keys(elem)[0];
+        let keys = generalKey.split(", ");
+        for (const key of keys) {
+            if(keywordLower.includes(key)) {
+                var resArr = elem[generalKey];
+                let rng = Math.floor(Math.random() * resArr.length);
+                resText = resArr[rng];
+            }       
+        };
     });
     return resText;
 };
