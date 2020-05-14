@@ -24,10 +24,10 @@ function findAndResponse (keyword) {
     if(!keyword) {
         return;
     }
-
+    var keywordLower = keyword.toLowerCase();
     result.forEach(function(elem) {
         let key = Object.keys(elem)[0];
-        if(keyword.includes(key)) {
+        if(keywordLower.includes(key)) {
             resText = elem[key];
         }       
     });
@@ -43,10 +43,10 @@ login({
         selfListen: false,
         logLevel: "silent",
         updatePresence: false,
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36" //get cái này xem trong file login.js
+        userAgent: "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36" //get cái này xem trong file login.js
     });
 
-   if (err) return console.error(err);
+    if (err) return console.error(err);
     api.listenMqtt(function callback(err, message){
         var response = findAndResponse(message.body);
         api.markAsRead(message.threadID);

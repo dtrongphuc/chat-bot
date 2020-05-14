@@ -5,7 +5,4 @@ var dataSchema = new mongoose.Schema({
 },{versionKey: false});
 
 var Data = mongoose.model('Data', dataSchema, 'data');
-Data.create({
-    general: []
-});
 module.exports = Data;
