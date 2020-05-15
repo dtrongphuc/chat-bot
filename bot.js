@@ -58,14 +58,6 @@ login({
             answeredThreads[message.threadID] = true;
             if(response === 'emoji sad') {
                 api.setMessageReaction('\uD83D\uDE22', message.messageID);
-                api.sendMessage({
-                    body: "hey",
-                    attachment: request.head(url, (err, res, body) => {
-                        request('https://i.picsum.photos/id/954/1200')
-                          .pipe(fs.createWriteStream('/1200.jpg'))
-                          .on('close', callback)
-                    })
-                }, message.threadID);
                 return;
             }
             api.sendMessage(`${response}`, message.threadID);
