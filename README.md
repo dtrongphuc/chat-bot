@@ -37,29 +37,4 @@
  - Run `node login.js` -> Created file ` appstate.json`
  - Run `node bot.js`
 
-## Deploy on heroku
 
-1. Create app and push code
-
-![Create App](https://i.imgur.com/ZMTNrMe.gif)
-
-2 - Start  (This is option **ON** - **OFF** bot)
-
-![Run](https://i.imgur.com/QNY4JJh.gif)
-
-### Edit file - > Push on host
-
-`git add .`
-
-`git commit -m "content comment"`
-
-`git push heroku master`
-
-![Create App](https://i.imgur.com/LlyvegL.gif)
-
-### Create Traffic for website app
-1. Go to [pingdom](https://www.pingdom.com). -> Create Account
-![pingdom](https://i.imgur.com/YxYqWnr.png)
-2. add website app
-![pingdom](https://i.imgur.com/nZD6qvw.png)
- 
