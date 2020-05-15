@@ -54,8 +54,10 @@ login({
         getData();
         var response = findAndResponse(message.body);
         api.markAsRead(message.threadID);
+        api.sendTypingIndicator(message.threadID);
         if(response) {
             answeredThreads[message.threadID] = true;
+            api.setMessageReaction('\uD83D\uDE0D', message.messageID);
             api.sendMessage(`${response}`, message.threadID);
         }
         return;
