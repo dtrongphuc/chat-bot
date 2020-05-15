@@ -54,11 +54,14 @@ login({
         getData();
         var response = findAndResponse(message.body);
         api.markAsRead(message.threadID);
-        api.sendTypingIndicator(message.threadID);
         if(response) {
             answeredThreads[message.threadID] = true;
             if(response === 'emoji sad') {
                 api.setMessageReaction('\uD83D\uDE22', message.messageID);
+                api.sendMessage({
+                    body: "hey",
+                    attachment: fs.createReadStream('https://i.picsum.photos/id/553/200/200.jpg')
+                }, message.threadID);
                 return;
             }
             api.sendMessage(`${response}`, message.threadID);
