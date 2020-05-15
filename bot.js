@@ -57,7 +57,10 @@ login({
         api.sendTypingIndicator(message.threadID);
         if(response) {
             answeredThreads[message.threadID] = true;
-            api.setMessageReaction('\uD83D\uDE0D', message.messageID);
+            if(response === 'emoji sad') {
+                api.setMessageReaction('\uD83D\uDE22', message.messageID);
+                return;
+            }
             api.sendMessage(`${response}`, message.threadID);
         }
         return;
