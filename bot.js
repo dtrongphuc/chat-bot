@@ -60,7 +60,11 @@ login({
                 api.setMessageReaction('\uD83D\uDE22', message.messageID);
                 api.sendMessage({
                     body: "hey",
-                    attachment: fs.createReadStream('https://i.picsum.photos/id/553/200/200.jpg')
+                    attachment: request.head(url, (err, res, body) => {
+                        request('https://i.picsum.photos/id/954/1200')
+                          .pipe(fs.createWriteStream('/1200.jpg'))
+                          .on('close', callback)
+                    })
                 }, message.threadID);
                 return;
             }
