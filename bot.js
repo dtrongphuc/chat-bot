@@ -17,8 +17,6 @@ async function getData() {
     result = await data[0].general;
 };
 
-getData();
-
 function findAndResponse (keyword) {
     var resText;
     if(!keyword) {
@@ -53,6 +51,7 @@ login({
 
     if (err) return console.error(err);
     api.listenMqtt(function callback(err, message){
+        getData();
         var response = findAndResponse(message.body);
         api.markAsRead(message.threadID);
         if(response) {
