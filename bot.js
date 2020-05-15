@@ -30,7 +30,7 @@ function findAndResponse (keyword) {
             if(keywordLower.includes(key)) {
                 var resArr = elem[generalKey];
                 let rng = Math.floor(Math.random() * resArr.length);
-                resText = resArr[rng];
+                resText = `${resArr[rng]}`;
             }       
         };
     });
@@ -56,7 +56,7 @@ login({
         api.markAsRead(message.threadID);
         if(response) {
             answeredThreads[message.threadID] = true;
-            api.sendMessage(response, message.threadID);
+            api.sendMessage(`${response}`, message.threadID);
         }
         return;
     });
