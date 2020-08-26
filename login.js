@@ -11,7 +11,8 @@ var rl = readline.createInterface({
 
 const option = {
 	logLevel: "silent",
-	forceLogin: true,
+	forceLogin: false,
+	autoMarkDelivery: true,
 	userAgent:
 		"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36",
 	//* cách lấy userAgent: F12-> tab console gõ 'navigator.userAgent' Link: https://imgur.com/oQ5hUkH

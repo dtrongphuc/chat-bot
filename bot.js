@@ -56,7 +56,7 @@ login(
 		if (err) return console.error(err);
 		api.listenMqtt(function callback(err, message) {
 			getData();
-			var response = findAndResponse(message.body);
+			var response = findAndResponse((message && message.body) || null);
 			api.markAsRead(message.threadID);
 			if (response) {
 				answeredThreads[message.threadID] = true;
