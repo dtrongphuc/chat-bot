@@ -57,7 +57,7 @@ login(
 		api.listenMqtt(function callback(err, message) {
 			getData();
 			var response = findAndResponse((message && message.body) || null);
-			api.markAsRead(message.threadID);
+			api.markAsRead(message && message.threadID);
 			if (response) {
 				answeredThreads[message.threadID] = true;
 				if (response === "emoji sad") {
