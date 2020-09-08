@@ -33,7 +33,7 @@ function findAndResponse(keyword) {
 
 		console.log(keywordLower, keys);
 		for (const key of keys) {
-			if (keywordLower.includes(key)) {
+			if (keywordLower.includes(key.toLowerCase())) {
 				var resArr = elem[generalKey];
 				let rng = Math.floor(Math.random() * resArr.length);
 				resText = `${resArr[rng]}`;
