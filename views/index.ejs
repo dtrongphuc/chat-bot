@@ -98,7 +98,7 @@
 
 						axios
 							.post('/send', {
-								key: key.value,
+								key: key.value.toLowerCase(),
 								response: response.value,
 							})
 							.then(() => alert('Thành công!'))

@@ -8,7 +8,7 @@ module.exports.sendData = async function (req, res) {
 		newObj[key] = [response];
 		let check = false;
 		let newArr = general.map((item) => {
-			if (Object.keys(item)[0] === key) {
+			if (Object.keys(item)[0].includes(key)) {
 				item[key].push(response);
 				check = true;
 			}
