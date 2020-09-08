@@ -1,55 +1,111 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="vi"> <!--<![endif]-->
-<head>
+<!--[if lt IE 7]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="vi">
+	<!--<![endif]-->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Khá Bá Bánh site" />
+		<meta name="author" content="dtrongphuc" />
 
-<meta name="description" content="Khá Bá Bánh site">
-<meta name="author" content="dtrongphuc">
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1"
+		/>
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Bot Meo 6.2</title>
 
-<title>Bot Meo 6.2</title>
+		<!-- STYLES -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		/>
+		<!--[if lt IE 9]>
+			<script
+				type="text/javascript"
+				src="js/modernizr.custom.js"
+			></script>
+		<![endif]-->
+		<!-- /STYLES -->
+	</head>
 
-<!-- STYLES -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<!--[if lt IE 9]> <script type="text/javascript" src="js/modernizr.custom.js"></script> <![endif]-->
-<!-- /STYLES -->
-
-</head>
-	
-<body>
-
-<!-- WRAPPER ALL -->
-<div class="container py-3">
-	<form class="bot-form text-center border border-info m-5 px-5 py-3">
-		<h1 class="text-center mb-3">Bot</h1>
-		<div class="form-col align-items-center">
-			<div class="my-2 d-flex align-items-center">
-				<label class="mb-0" for="key">Keywords</label>
-				<input class="form-control mx-3" type="text" name="key" step="1" id="key" placeholder="Nhập nhiều key ngăn cách bằng dấu , " required>
-			</div>
-			<div class="my-2 d-flex align-items-center">
-				<label class="mb-0" for="res">Response</label>
-				<input class="form-control mx-3" min="0" max="10000" type="text" step="1" name="res" id="res" placeholder="Câu trả lời" required>
-			</div>
+	<body>
+		<!-- WRAPPER ALL -->
+		<div class="container py-3">
+			<form class="bot-form text-center border border-info m-5 px-5 py-3">
+				<h1 class="text-center mb-3">Bot</h1>
+				<div class="form-col align-items-center">
+					<div class="my-2 d-flex align-items-center">
+						<label class="mb-0" for="key">Keywords</label>
+						<input
+							class="form-control mx-3"
+							type="text"
+							name="key"
+							step="1"
+							id="key"
+							placeholder="Nhập nhiều key ngăn cách bằng dấu , "
+							required
+						/>
+					</div>
+					<div class="my-2 d-flex align-items-center">
+						<label class="mb-0" for="res">Response</label>
+						<input
+							class="form-control mx-3"
+							min="0"
+							max="10000"
+							type="text"
+							step="1"
+							name="res"
+							id="res"
+							placeholder="Câu trả lời"
+							required
+						/>
+					</div>
+				</div>
+				<button
+					id="submit"
+					type="submit"
+					class="btn btn-primary mt-3 bot-form__submit"
+				>
+					Send
+				</button>
+			</form>
 		</div>
-		<button id="submit" type="submit" class="btn btn-primary mt-3 bot-form__submit">Send</button>
-	</form>
-</div>
-<!-- / WRAPPER ALL -->
-	
-<!-- SCRIPTS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="../js/main.js"></script>
-<!-- /SCRIPTS -->
 
-</body>
+		<!-- SCRIPTS -->
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				document
+					.querySelector('.bot-form')
+					.addEventListener('submit', (e) => {
+						e.preventDefault();
+						let key = document.getElementById('key');
+						let response = document.getElementById('res');
 
-<!-- Mirrored from frenify.com/envato/marketify/html/arlo/1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Sep 2019 03:08:28 GMT -->
+						if (!key.value || !res.value) return;
+
+						axios
+							.post('/send', {
+								key: key.value,
+								response: response.value,
+							})
+							.then(() => alert('Thành công!'))
+							.catch(() => alert('Có lỗi xảy ra!'));
+					});
+			});
+		</script>
+		<!-- /SCRIPTS -->
+	</body>
 </html>

@@ -5,11 +5,14 @@
 	"main": "bot.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node index.js"
+		"start": "node index.js",
+		"dev": "nodemon --inspect ./index.js"
 	},
 	"author": "PhucBinz, dtrongphuc",
 	"license": "ISC",
 	"dependencies": {
+		"axios": "^0.20.0",
+		"body-parser": "^1.19.0",
 		"dotenv": "^8.2.0",
 		"ejs": "^2.7.1",
 		"express": "^4.17.1",
@@ -17,5 +20,8 @@
 		"mongoose": "^5.9.14",
 		"request": "^2.88.0",
 		"simsimi": "^3.0.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.4"
 	}
 }
