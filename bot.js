@@ -1,10 +1,10 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const fs = require("fs");
-const login = require("facebook-chat-api");
-const mongoose = require("mongoose");
-var request = require("request");
-var Data = require("./models/data.model");
+const fs = require('fs');
+const login = require('facebook-chat-api');
+const mongoose = require('mongoose');
+var request = require('request');
+var Data = require('./models/data.model');
 
 mongoose.connect(process.env.MONGO_URI, {
 	useNewUrlParser: true,
@@ -28,7 +28,10 @@ function findAndResponse(keyword) {
 	var keywordLower = keyword.toLowerCase();
 	result.forEach(function (elem) {
 		let generalKey = Object.keys(elem)[0];
-		let keys = generalKey.split(", ");
+		let keys = generalKey.split(', ');
+		console.log('==========================');
+
+		console.log(keywordLower, keys);
 		for (const key of keys) {
 			if (keywordLower.includes(key)) {
 				var resArr = elem[generalKey];
@@ -42,27 +45,27 @@ function findAndResponse(keyword) {
 
 login(
 	{
-		appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")),
+		appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8')),
 	},
 	(err, api) => {
 		api.setOptions({
 			selfListen: false,
-			logLevel: "silent",
+			logLevel: 'silent',
 			updatePresence: false,
 			userAgent:
-				"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36", //get cái này xem trong file login.js
+				'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36', //get cái này xem trong file login.js
 		});
 
 		if (err) return console.error(err);
-		api.listenMqtt(function callback(err, message) {
+		api.listenMqtt(async function callback(err, message) {
 			if (err) return console.error(err);
-			getData();
+			await getData();
 			var response = findAndResponse((message && message.body) || null);
 			api.markAsRead(message.threadID);
 			if (response) {
 				answeredThreads[message.threadID] = true;
-				if (response === "emoji sad") {
-					api.setMessageReaction("\uD83D\uDE22", message.messageID);
+				if (response === 'emoji sad') {
+					api.setMessageReaction('\uD83D\uDE22', message.messageID);
 					return;
 				}
 				api.sendMessage(`${response}`, message.threadID);

@@ -1,5 +1,3 @@
-const db = require('../data');
-const fs = require('fs');
 const Data = require('../models/data.model');
 
 module.exports.sendData = async function (req, res) {
@@ -39,7 +37,7 @@ module.exports.sendData = async function (req, res) {
 			);
 		}
 
-		await db.getData();
+		//await db.getData();
 		res.status(200).json({ success: true });
 	} catch (err) {
 		res.status(500).json();
