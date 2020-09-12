@@ -8,7 +8,7 @@
 		"start": "node index.js",
 		"dev": "nodemon --inspect ./index.js"
 	},
-	"author": "PhucBinz, dtrongphuc",
+	"author": "dtrongphuc",
 	"license": "ISC",
 	"dependencies": {
 		"axios": "^0.20.0",
